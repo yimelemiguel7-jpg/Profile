@@ -1,0 +1,105 @@
+/* =========================================================
+   GAMING ZONE — a different world
+   Loaded AFTER style.css, only by gaming-zone.html.
+   It re-colors everything through the same variables.
+
+   EASY EDITS: change the colors in the two blocks below.
+   ========================================================= */
+
+/* DARK (default): night + neon green + lemon & rose */
+body.gaming {
+  --bg: #070816;          /* night (dominant) */
+  --surface: #0d1024;
+  --surface-2: #131736;
+  --line: #232a55;
+  --text: #f2f5ff;
+  --muted: #9aa3d0;
+  --accent: #39ff88;      /* neon green (secondary) */
+  --accent-glow: rgba(57, 255, 136, 0.4);
+  --pop: #fff34d;         /* lemon (accent) */
+  --rose: #ff4d8d;        /* rose (accent) */
+  --on-accent: #04110a;
+  --font: "Sora", system-ui, sans-serif;
+  --display: "Orbitron", "Sora", sans-serif;
+  background-image:
+    linear-gradient(rgba(57, 255, 136, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(57, 255, 136, 0.045) 1px, transparent 1px),
+    radial-gradient(900px 500px at 85% -10%, rgba(255, 77, 141, 0.16), transparent 60%),
+    radial-gradient(800px 500px at 0% 10%, rgba(57, 255, 136, 0.10), transparent 60%);
+  background-size: 44px 44px, 44px 44px, auto, auto;
+  background-attachment: fixed;
+}
+
+/* LIGHT: platinum + French gray + gunmetal (calm, no glow) */
+:root[data-theme="light"] body.gaming {
+  --bg: #e5e4e2;
+  --surface: #f0efed;
+  --surface-2: #dcdbd9;
+  --line: #b9bdc6;
+  --text: #2a3439;
+  --muted: #5b666c;
+  --accent: #2a3439;
+  --accent-glow: rgba(42, 52, 57, 0.15);
+  --pop: #2a3439;
+  --rose: #2a3439;
+  --on-accent: #e5e4e2;
+  background-image:
+    linear-gradient(rgba(42, 52, 57, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(42, 52, 57, 0.06) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+/* ---------- gamer typography ---------- */
+body.gaming h1, body.gaming h2, body.gaming .eyebrow, body.gaming .label { font-family: var(--display); }
+body.gaming h1 { font-size: clamp(2.2rem, 5.6vw, 4rem); text-transform: uppercase; letter-spacing: 0.02em; }
+body.gaming h1 em { color: var(--accent); text-shadow: 0 0 22px var(--accent-glow); }
+body.gaming .label { letter-spacing: .16em; }
+body.gaming .label::after { background: linear-gradient(90deg, var(--accent), transparent); height: 2px; opacity: .5; }
+body.gaming .motto::after { background: var(--rose); }
+body.gaming .nav a.active { text-shadow: 0 0 12px var(--accent-glow); }
+
+/* ---------- HUD strip under the header ---------- */
+.hud { display: flex; flex-wrap: wrap; gap: 10px 26px; margin-top: 18px; padding: 10px 16px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); font-family: var(--mono); font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.hud b { color: var(--accent); font-weight: 500; }
+.hud .online::before { content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 10px var(--accent); margin-right: 8px; }
+
+/* ---------- cards get a neon edge ---------- */
+body.gaming .card { position: relative; border-color: var(--line); background: linear-gradient(180deg, var(--surface), var(--surface-2)); }
+body.gaming .card.glow { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent-glow), 0 0 28px var(--accent-glow); }
+body.gaming .card.rose { border-color: var(--rose); box-shadow: 0 0 28px rgba(255, 77, 141, .25); }
+:root[data-theme="light"] body.gaming .card.glow,
+:root[data-theme="light"] body.gaming .card.rose { box-shadow: none; }
+body.gaming .ico { border-color: var(--accent); box-shadow: 0 0 14px var(--accent-glow); }
+body.gaming .ico.rose { color: var(--rose); border-color: var(--rose); box-shadow: 0 0 14px rgba(255, 77, 141, .3); }
+body.gaming .ico.pop { color: var(--pop); border-color: var(--pop); box-shadow: 0 0 14px rgba(255, 243, 77, .25); }
+
+body.gaming .btn.primary { box-shadow: 0 0 22px var(--accent-glow); }
+body.gaming .theme { box-shadow: 0 0 18px var(--accent-glow); }
+
+/* ---------- skill "unlocks" ---------- */
+.unlocks { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+.unlock { font-family: var(--mono); font-size: .76rem; padding: 7px 13px; border-radius: 8px; border: 1px solid var(--line); background: var(--surface-2); color: var(--text); }
+.unlock::before { content: "+ "; color: var(--accent); }
+.unlock.rose::before { color: var(--rose); }
+
+.split { display: grid; grid-template-columns: 1.2fr 1fr; gap: 22px; align-items: start; }
+.card h2 { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+.card h2 .i { color: var(--accent); }
+.card p + p { margin-top: 12px; }
+.note { font-family: var(--mono); font-size: .74rem; color: var(--muted); border: 1px dashed var(--line); border-radius: 8px; padding: 10px 12px; margin-top: 14px; }
+
+/* ---------- playlist ---------- */
+.tracks { list-style: none; display: grid; gap: 10px; }
+.track { display: flex; align-items: center; gap: 14px; padding: 12px 14px; border-radius: 12px; background: var(--surface-2); border: 1px solid var(--line); }
+.track .no { font-family: var(--mono); color: var(--pop); font-size: .8rem; width: 22px; }
+.track b { display: block; font-size: .92rem; }
+.track small { color: var(--muted); font-size: .78rem; }
+.eq { margin-left: auto; display: flex; gap: 3px; align-items: flex-end; height: 18px; }
+.eq i { width: 3px; background: var(--rose); border-radius: 2px; animation: bounce 1.1s ease-in-out infinite; }
+.eq i:nth-child(1) { height: 40%; }
+.eq i:nth-child(2) { height: 90%; animation-delay: .2s; }
+.eq i:nth-child(3) { height: 60%; animation-delay: .4s; }
+@keyframes bounce { 50% { transform: scaleY(.45); } }
+@media (prefers-reduced-motion: reduce) { .eq i { animation: none; } }
+
+@media (max-width: 900px) { .split { grid-template-columns: 1fr; } }
